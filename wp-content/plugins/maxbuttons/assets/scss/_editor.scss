@@ -1,0 +1,732 @@
+
+// expand screen to full width
+&.maxbuttons-controller-edit .main,
+&.maxbuttons-controller-button .main {
+	width: auto;
+	max-width: 1200px;
+}
+
+ .option-container {
+	margin: 26px 0;
+//	border: solid 1px #cccccc;
+	@include border-radius(3px,3px,3px,3px);
+	background-color: #fff;
+	position: relative;
+	z-index: 1;
+
+	.title {
+
+		font-size: 22px;
+		padding: 16px 2px 16px 18px;
+		text-align: left;
+		position: relative;
+		z-index: 1;
+	//	background: #88c5c2;
+		background: linear-gradient(90deg, rgba(136,197,194,1) 16%, rgba(255,255,255,1) 99%);
+		color: #fff;
+	}
+	.section-title {
+		padding: 15px;
+		margin-top: 10px;
+		font-weight: 700;
+		font-size: 16px;
+	}
+
+ 	// new struct layout
+		.section-title {
+			background-color: #fff;
+
+		}
+
+    	// Used @ social sharing
+			.option-list {
+				//float: left;
+				display: inline-block;
+				&:after { clear: both; }
+				.help {
+					float: right;
+					margin-top:  5px;
+				}
+			}
+
+		.help {
+
+			position: relative;
+			//width: 18px;
+			//height: 18px;
+			font-size: 24px;
+			color: #666;
+			margin-left: 10px;
+
+			span {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; //"Open Sans",sans-serif;
+				font-size: 13px;
+				background-color:#fff;
+				color: #444;
+				position: absolute;
+				display: none;
+				padding: 12px 10px;
+				top: 0;
+				left: 30px;
+				min-width: 250px;
+				border-radius: 5px;
+				text-align: left;
+				z-index: 1000; // above all
+				border: 1px solid #ccc;
+				line-height: 18px;
+				box-shadow: 2px 2px 3px #ccc;
+				box-sizing: border-box; // prevent box from escaping the canvas
+				.nowrap {
+					white-space: nowrap;
+				}
+				p {
+				//	white-space: nowrap;
+				}
+				.shortcode {
+					color: 555;
+				//	text-decoration: underline;
+				  white-space: nowrap;
+				}
+
+			}
+			&:hover span {
+					display: block;
+				}
+		}
+
+		.block_sidebar {
+			position: absolute;
+			right: 0;
+			top: 0;
+			left: calc(100% - 50px);
+			//width: 50px;
+			height: 100%;
+			transition: all 400ms linear;
+			z-index: 1;
+		 	background-color: #fff;
+			overflow: hidden;
+			width: 50px;
+
+			&.active {
+				left: 0;
+				bottom: 0;
+				right: 0;
+				top: 0;
+				width: 100%;
+		//		transition: all 500ms linear;
+
+				.open_control
+				{
+					left: 0;
+				//	right: 0;
+				//	width: 50px;
+				}
+				.inside {
+					opacity: 1;
+					padding-left: 80px;
+				}
+
+				.title {
+					padding-left: 80px;
+					background: #fff;
+					z-index: 3;
+
+				}
+
+
+			}
+			.open_control {
+				background: #eee;
+				background: linear-gradient(90deg, #ccc, #fff);
+				z-index: 4;
+				width: 50px;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				cursor: pointer;
+				border-top-left-radius: 6px;
+				border-bottom-left-radius: 6px;
+				border-left: 3px solid rgba(204,204,204,0.7);
+				span {
+						font-size: 16px;
+						text-transform: uppercase;
+						font-weight: 700;
+						color: rgba(0,0,0,0.3);
+						position: absolute;
+						top: 40%;
+						//margin: -15px 0 0 -10px;
+						white-space: nowrap;
+						left:0;
+						right: 0;
+						transform: rotate(90deg);
+						letter-spacing: 1.05px;
+						word-spacing: 1.1em
+
+				}
+
+			}
+
+			.inside {
+				opacity: 0;
+			}
+		}
+}
+
+
+ .option-container > .inside, .block_sidebar > .inside {
+	padding: 38px 55px 10px 15px; // 55px is to make space for sidebars in PRO
+//	border-top: solid 1px #cccccc;
+	background-color: #ffffff;
+	[data-show]:not(.condshow), .option[data-show]:not(.condshow), [data-has]:not(.condshow), .option[data-has]:not(.condshow)
+	{
+	  	opacity: 0;
+	 	 display: none;
+	}
+
+	// option-design should dissapear
+ 	// option finetuning in elements.scss
+ 	.option, .option-design {
+		margin-bottom: 10px;
+		display: block;
+		position: relative;
+		 &.hidden {
+				display: none;
+		 }
+			// dot label on it's way out as well
+		 .label, > label{
+			display: inline-block;
+			font-weight: bold;
+			padding-left: 3px;
+			padding-top: 5px;
+			width: 145px;
+			vertical-align: top;
+			cursor: default;
+			min-height: 25px;
+			&[for]
+			{
+				cursor:pointer; // show label with for as link ( focus on field )
+			}
+			@include bp(780)
+			{
+				font-size: 14px;
+			}
+
+		} //label > label.
+		// Tooltip to show changes in responsive from original values.
+		.original-tooltip
+		{
+			position: absolute;
+			padding: 3px;
+			background: #FFFFE1;
+			border: 1px solid #000;
+			z-index: 99;
+			left: 5%;
+			top: 100%;
+			white-space: nowrap;
+		}
+
+ 		&:after, &:before { clear: both; }
+	}
+	 // new stuff
+	.option {
+		// note that nth targets elements, not classes so nth
+		label {
+			margin-top: 2px;
+			&.mbcolor { margin-top: 7px; }
+		}
+
+		label:nth-of-type(2) {
+			margin-left: 30px;
+			width: 115px;
+		}
+		.control-group {
+			display: inline-block;
+		}
+		.rotate-left { @include rotate(-45); }
+		.rotate-right { @include rotate(45); }
+	}
+
+}
+
+
+ .option-design {
+	margin-bottom: 10px;
+
+
+	.input td div.cell-label {
+		padding: 1px 10px 0px 5px;
+		font-weight: bold;
+		border-bottom: solid 1px #d1d1d1;
+		width: 180px;
+		font-size: 13px;
+		height: 30px;
+
+		// For expirations of tables
+ 		//&:before { content: 'table cell'; color: #ff0000; }
+	}
+	.default-other {  // default text
+		font-size: 13px;
+	}
+	/*	Gone with tables
+		th, td.label {
+		font-size: 13px;
+	} */
+}
+
+
+ .option p.note, .option-design p.note {
+	font-style: italic;
+	display: inline-block;
+	clear:both;
+	color: #808080;
+	padding-left: 3px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	margin-left: 0;
+	display: block;
+}
+
+
+.option p.warning {
+	border-left: 5px solid #d98500;
+	font-size: 13px;
+	padding-left: 18px;
+	line-height: 20px;
+	max-width: 450px;
+
+}
+
+.option p.error {
+	border-left: 5px solid #ff0000;
+	font-size: 13px;
+	padding-left: 18px;
+	line-height: 20px;
+	max-width: 450px;
+
+	font-weight: 600;
+
+}
+
+ .mb-message.shortcode {
+	 h4 {
+			font-size: 16px;
+	 }
+	 strong { font-weight: 600; }
+
+ 	.expanded {
+ 		display: none;
+		p { font-size: 14px; line-height: 22px; }
+
+ 		.example {
+ 			strong { width: 300px;
+ 					display: inline-block;
+ 			}
+
+		}
+ 	}
+	.shortcode-expand {
+	 	//float: right;
+	 	clear: both;
+	 	font-weight: 700;
+	 	display: block;
+	 	margin: 5px 0;
+
+	 	cursor: pointer;
+		@include bp(1024)
+		{
+				float: none;
+				text-align: left;
+				margin: 10px 0;
+				display: block;
+		}
+	}
+ }
+
+ .manual-box
+ {
+ 	 float: right;
+ 	 margin: 3px 15px;
+	 top: 0;
+	 right: 0;
+
+	 a {
+ 		text-align:center;
+	 	width: 100%;
+	 	background: #e0e0e0 none repeat scroll 0 0;
+		font-size: 13px;
+		font-weight: 600;
+		margin-left: 4px;
+		margin-top: 5px;
+		padding: 4px 8px;
+		position: relative;
+		text-decoration: none;
+		text-shadow: none;
+
+	 }
+ }
+
+ .manual-entry {
+ 	 display: none;
+
+ 	position: absolute;
+ 	border: 1px solid $c-border-dark;
+ 	background: rgba(255,255,255,1);
+
+ 	width: 45%;
+ 	right: 25px;
+ 	z-index: 199;
+ 	box-sizing: border-box;
+ 	padding-bottom: 20px;
+
+ 	h3 {
+ 		font-size: 18px;
+ 		width: calc(100%);
+ 		box-sizing: border-box;
+ 		padding: 10px 0;
+ 		border-bottom: 1px solid $c-border-light;
+ 		text-align: center;
+ 		margin: 0;
+ 		padding-right: 35px;
+ 		position: relative;
+
+
+ 		span {
+ 		 	box-sizing: border-box;
+			cursor: pointer;
+ 			width: 35px;
+ 			height: 100%;
+ 			font-size: 25px;
+ 			display: inline-block;
+ 			position: absolute;
+ 			right: 5px;
+ 			top: 0;
+ 			padding-top: 8px;
+ 		}
+ 	}
+
+ 	h4, p, ol, ul {
+ 		padding: 0 15px;
+ 	}
+ 	h4 { font-size: 16px; }
+ 	p { font-size: 13px; }
+
+
+}
+
+/* Preview window */
+.output {
+	position: fixed;
+	top: 45px;
+	left: 70%;
+	background-color: #ffffff;
+	border: solid 1px #414141;
+	box-shadow: 0px 0px 6px #808080;
+	z-index: 99;
+	width: auto;
+	min-width: 300px;
+	@include bp(780) {
+		@include box-shadow(0,0,0,0);
+		top: 0;
+		left: 0;
+		right: 0;
+		position: relative;
+		margin-bottom: 15px;
+		border-color: #ccc;
+
+	}
+	.header {
+		color: #222222;
+		background-color: #ffffff;
+		border-bottom: solid 1px #cccccc;
+		font-family: "Open Sans", sans-serif;
+		font-size: 16px;
+		font-weight: bold;
+		padding: 8px 0px 8px 10px;
+		cursor: move;
+		position: relative;
+		.preview-toggle {
+			float: right;
+			font-size: 30px;
+			width:30px;
+			position: absolute;
+			top: 3px;
+			right: 0;
+
+		}
+	}
+	.inner {
+		padding: 5px;
+		p {
+			padding: 5px 0 5px 5px;
+			&#live-preview-screentitle { margin : 0 }
+		}
+	}
+	.input.mbcolor {
+		float: left;
+		position: relative;
+		margin-top: 5px;
+
+		.wp-picker-container.wp-picker-active {
+			padding: 15px;
+			border: 1px solid #ccc;
+			background-color: #fff;
+			position: absolute;
+			bottom: -15px;
+			left: -270px;
+			z-index: 102;
+			@include box-shadow(4px, 1px, 5px, #ccc);
+		}
+	}
+	.note {
+		float: left;
+		margin: 8px 0px 0px 10px;
+	}
+	.result {
+		padding: 20px 5px;
+		//margin: 20px;
+		p {
+			padding: 5px 0px 5px 0px;
+			margin: 0;
+		}
+		&.preview-border-box > * {
+			box-sizing: border-box;
+		}
+		.border_wrapper
+		{
+			position: relative;
+			display: inline-block;
+			margin: 15px;
+			.preview_border_height
+			{
+			//	margin-right: 8px;
+				position:absolute;
+				height: 100%;
+				width: 3px;
+				border-left: 1px dashed #000;
+				border-top: 1px dashed #000;
+
+				span
+				{
+					right: 30px;
+					transform: rotate(-90deg);
+			    transform-origin: 100% 0;
+			    position: absolute;
+			    line-height: 30px;
+					display: block;
+					text-align: center;
+
+				}
+
+			}
+			.preview_border_width
+			{
+				margin-top: 5px;
+				border-bottom: 1px dashed #000;
+				border-left: 1px dashed #000;
+				border-right: 1px dashed #000;
+				position: absolute;
+				height: 3px;
+				width: 100%;
+				text-align: center;
+				span
+				{
+					background: #fff;
+				}
+			}
+			.maxbutton-preview
+			{
+				margin-left: 25px;
+			}
+
+		}
+	}
+
+} // output - preview window
+
+
+/* Conditionals */
+.conditional-option { display: none; }
+
+
+ .media_option_prot, #media_desc {
+	display: none;
+}
+
+// The warning layout for the copy button dialog
+.copy-warning {
+	width: 400px;
+	margin: 0 auto;
+	position: relative;
+	line-height: 1.1;
+
+	&:before {
+		content: "\f534";
+		font-size: 40px;
+		color: #ff0000;
+		width: 35px;
+		height: 35px;
+		font-family: "Dashicons";
+		position: absolute;
+		left: 20px;
+		top: 40%;
+		margin-top: -14px;
+	}
+
+	.example {
+		margin-bottom: 5px;
+	}
+
+
+}
+
+  .form-actions {
+  	@extend .button-bar;
+
+/*	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: dashed 1px #d1d1d1; */
+	a {
+		margin-right: 10px;
+	}
+}
+
+// general button save
+.button-save
+{
+	transition: all 400ms linear;
+}
+
+// button editor.
+.editor
+{
+		min-width: 850px;
+
+		.screen-option-wrapper
+		{
+			display: flex;
+
+			.screen-option
+			{
+				margin: 4px 0;
+				display: flex;
+				align-items: center;
+				padding: 8px 12px;
+				margin-right: 4px;
+				//font-size: 14px;
+				line-height: 20px;
+			//	height: 26px;
+			//	width: 100px;
+				border: 1px solid #ccc;
+			//	background: #e5e5e5;
+				cursor: pointer;
+				text-shadow:  -1px 0 1px #ccc;
+				box-shadow: 0 1px 0 #aaa;
+				min-height: 75px;
+				vertical-align: bottom;
+				box-sizing: border-box;
+
+				.screen_name
+				{
+					font-size: 14px;
+				}
+				.screen_size
+				{
+					font-size: 10px;
+					display: block;
+					text-align: center;
+				}
+	/*			span
+				{
+					margin-right: 8px;
+				} */
+				&.option-active
+				{
+					background: #fff;
+				//	border-color: #fff;
+
+					box-shadow: 1px 1px 1px #2A0043;
+					.screen_name
+					{
+						font-weight: bold;
+					}
+
+				}
+				&.button-save
+				{
+					text-decoration: none;
+					float: right;
+					border-radius: 4px;
+					padding: 8px 26px;
+					text-transform: uppercase;
+					background: rgba(136,197,194,1);
+
+
+					a
+					{
+						margin: 0;
+						border: 0;
+						letter-spacing: 1.1px;
+						font-size: 16px;
+						font-weight: 700;
+
+					}
+				}
+			} // screen option
+			a.screen-option
+			{
+					margin-left: auto;
+					margin-right: 0;
+			}
+	} // screen option wrapper
+		.mbscreen-editor
+		{
+			display: none;
+			&.current-screen
+			{
+				display: block;
+			}
+			.fieldmap { display: none; }
+		}
+} // editor
+
+/** Upgrade window for responsive */
+.mb_tab.option-container.upgrade
+{
+	.removed-note
+	{
+		color: #ff0000;
+		font-weight: 600;
+		text-align:center;
+		font-size: 14px;
+		display:none;
+	}
+	ul {
+		list-style-type: disc;
+		margin: 25px 15px;
+
+		li { font-size: 14px; }
+	}
+
+	.button-row
+	{
+	  margin-bottom: 8px;
+		.button
+		{
+			padding: 8px;
+			width: 180px;
+			text-align: center;
+
+			&.buynow {
+				font-size: 20px;
+		 	}
+			&.features
+			{
+				padding: 6px 8px;
+			}
+		}
+	}
+
+
+}

@@ -1,0 +1,19 @@
+.ct-header-cart {
+
+	[data-price="no"] .amount {
+		display: none;
+	}
+}
+
+
+// when cart is placed in offcanvas
+#offcanvas .ct-header-cart {
+
+	.ct-cart-item {
+		width: 100%;
+	}
+
+	.ct-cart-content {
+		display: none;
+	}
+}

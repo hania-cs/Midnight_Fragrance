@@ -1,0 +1,178 @@
+.media-popup .modal_content {
+  min-height: 250px;
+  max-height: 100%;
+  margin-bottom: 45px;
+}
+.media-popup .ajax-content {
+  margin: 0;
+  overflow-y: auto;
+}
+.media-popup .ajax-content .button-list {
+  display: flex;
+  align-items: center;
+  clear: both;
+}
+.media-popup .ajax-content .button-list .button-id {
+  flex: 1;
+}
+.media-popup .ajax-content .button-list .button-preview {
+  flex: 3;
+  overflow: hidden;
+  padding: 25px 0;
+}
+.media-popup .ajax-content .button-list .button-name {
+  flex: 1;
+}
+.media-popup .ajax-content .button-select {
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+.media-popup .ajax-content .button-select.selected {
+  border-top: 1px solid #0085ba;
+  border-bottom: 1px solid #0085ba;
+  background: #f7f7f7;
+}
+.media-popup .tablenav {
+  margin: 10px 0;
+  clear: both;
+  min-height: 20px;
+}
+.media-popup .tablenav span {
+  font-size: 15px;
+  cursor: pointer;
+}
+.media-popup .tablenav .input-paging {
+  width: 55px;
+}
+.media-popup .tablenav a:hover {
+  color: #000;
+}
+.media-popup .tablenav a.disabled {
+  color: #aaa;
+  cursor: default;
+}
+.media-popup .shortcode-options {
+  margin: 0 auto 35px auto;
+  display: inline-block;
+  /** This is a copy from _elements.scss **/
+}
+.media-popup .shortcode-options .button-preview {
+  overflow: hidden;
+}
+.media-popup .shortcode-options .option {
+  clear: both;
+  margin: 15px 0;
+}
+.media-popup .shortcode-options .input {
+  display: inline-block;
+}
+.media-popup .shortcode-options input {
+  display: inline-block;
+  padding: 4px;
+}
+.media-popup .shortcode-options label {
+  margin-right: 25px;
+  display: inline-block;
+  width: 150px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #000;
+}
+.media-popup .shortcode-options p {
+  clear: both;
+}
+.media-popup .shortcode-options input[type=button] {
+  clear: both;
+  float: none;
+}
+.media-popup .shortcode-options .more-field {
+  display: none;
+}
+.media-popup .shortcode-options .switch_button {
+  margin-left: -5px;
+}
+.media-popup .shortcode-options .switch_button label {
+  padding: 8px 5px;
+}
+.media-popup .shortcode-options .switch_button label:focus {
+  outline: none;
+}
+.media-popup .shortcode-options .switch_button input {
+  display: none;
+}
+.media-popup .shortcode-options .switch_button input:checked ~ .the_switch {
+  background: #6fbeb5;
+}
+.media-popup .shortcode-options .switch_button input:checked ~ .the_switch:after {
+  left: 26px;
+  background: #179588;
+}
+.media-popup .shortcode-options .switch_button input:checked ~ .the_switch.small:after {
+  left: 15px;
+}
+.media-popup .shortcode-options .switch_button input::disabled ~ .the_switch {
+  background: #d5d5d5;
+  pointer-events: none;
+}
+.media-popup .shortcode-options .switch_button input:disabled ~ .the_switch:after {
+  background: #bcbdbc;
+}
+.media-popup .shortcode-options .switch_button .the_switch {
+  position: relative;
+  display: inline-block;
+  height: 15px;
+  width: 50px;
+  background: #898989;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.media-popup .shortcode-options .switch_button .the_switch:after {
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 100px;
+  background: #aaa;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
+  content: "";
+  transition: all 0.2s ease;
+}
+.media-popup .shortcode-options .switch_button .the_switch.small {
+  height: 8px;
+  width: 30px;
+}
+.media-popup .shortcode-options .switch_button .the_switch.small:after {
+  height: 18px;
+  width: 18px;
+  top: -5px;
+}
+.media-popup .shortcode-options .switch_button .the_switch:active:after {
+  transform: scale(0.9, 0.85);
+}
+.media-popup .shortcode-options .switch_button .the_switch:focus {
+  outline: none;
+}
+.media-popup .maxajax-load-spinner {
+  background: rgba(0, 0, 0, 0) url("../../images/spinner.gif") no-repeat scroll 0 0/20px 20px;
+  display: inline-block;
+  margin: 5px 5px 0 0;
+  height: 40px;
+  opacity: 0.7;
+  vertical-align: middle;
+  width: 40px;
+}
+.media-popup .controls {
+  position: absolute;
+  width: 100%;
+  padding: 10px 0;
+  background: #f3f3f3;
+  text-align: right;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #ccc;
+}
+
+/*# sourceMappingURL=media_button.css.map */
